@@ -1,0 +1,64 @@
+<h1>FRISS DMS User Registration</h1>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <table class="table table-striped">
+            <tr>
+              <td><label>Name<span style="color:red"> *</span></label></td>
+              <td>
+                <input type="text" formControlName="fullName" class="form-control" [ngClass]="{ 'is-invalid': submitted && formValues.fullName.errors }" />
+                <div *ngIf="submitted && formValues.fullName.errors" class="invalid-feedback">
+                  <div *ngIf="formValues.fullName.errors.required">Name is required</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Email<span style="color: red"> *</span></label></td>
+              <td>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && formValues.email.errors }" />
+                <div *ngIf="submitted && formValues.email.errors" class="invalid-feedback">
+                  <div *ngIf="formValues.email.errors.required">Email is required</div>
+                  <div *ngIf="formValues.email.errors.email">Email must be a valid email address</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Username<span style="color:red"> *</span></label></td>
+              <td>
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && formValues.username.errors }" />
+                <div *ngIf="submitted && formValues.username.errors" class="invalid-feedback">
+                  <div *ngIf="formValues.username.errors.required">Username is required</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>password<span style="color:red"> *</span></label></td>
+              <td>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && formValues.password.errors }" />
+                <div *ngIf="submitted && formValues.password.errors" class="invalid-feedback">
+                  <div *ngIf="formValues.password.errors.required">Password is required</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Confirm Password<span style="color:red"> *</span></label></td>
+              <td>
+                <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && formValues.confirmPassword.errors }" />
+                <div *ngIf="submitted && formValues.confirmPassword.errors" class="invalid-feedback">
+                  <div *ngIf="formValues.confirmPassword.errors.required">Confirm Password is required</div>
+                  <div *ngIf="formValues.password.value !== formValues.confirmPassword.value">Confirm Password does not match correctly.</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><button type="submit" class="btn btn-primary">Sign Up</button></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

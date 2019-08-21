@@ -1,0 +1,33 @@
+<h1>{{loggerName}}</h1><br />
+
+<input #file type="file" multiple (change)="uploadDocument(file.files)" />
+<br /><br />
+<span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
+  {{progress}}%
+</span>
+
+<span style="font-weight:bold;color:green;" *ngIf="message">
+  {{message}}
+</span>
+
+<p *ngIf="!docs"><em>Loading...</em></p>
+<table class='table table-striped' *ngIf="docs">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th colspan="2">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doc of docs">
+      <td>{{ doc.id }}</td>
+      <td>
+        <a [routerLink]="" (click)="downloadDocument(doc.id)">{{doc.name}}</a>
+      </td>
+      <td>
+        <a [routerLink]="" (click)="deleteDocument(doc.id)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

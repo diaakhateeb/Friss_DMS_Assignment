@@ -3,9 +3,76 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataEntities", "DataEntities", "{910E2D0F-8773-4D64-9E5F-6C6429C0A121}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataModel", "DataModel\DataModel.csproj", "{B06079A0-CB77-42E3-A1EE-E7A99289D56B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging", "Logging", "{C3904D7C-D79A-459C-B93B-2485B4714389}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomLogger", "CustomLogger\CustomLogger.csproj", "{36F60AEB-4FE3-44B5-AB71-E9D6D97EF26A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreServices", "CoreServices", "{53F778EE-CDCD-440A-926F-D0F7DB530945}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentRepositoryService", "DocumentRepositoryService\DocumentRepositoryService.csproj", "{46FC6BF9-B324-4201-93A0-EE86721AAC87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPA", "SPA", "{5F59218C-71AA-4FBE-A3F4-EC8540717F99}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrissDMS", "FrissDMS\FrissDMS.csproj", "{C944DEBD-D1D1-45D7-BAF0-EB39067A9BDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{E39BA0AB-FBA3-4AED-BC37-4CC8ABC8FDAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntegrationTests", "IntegrationTests", "{18F777B7-4426-47B5-86EC-7FD992FDD7DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrissDMSWebApi.IntegrationTests", "FrissDMSWebApi.IntegrationTests\FrissDMSWebApi.IntegrationTests.csproj", "{AD4DE796-FADF-4FEC-BD67-95FB550E9D90}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrissDMSUnitTests", "FrissDMSUnitTests\FrissDMSUnitTests.csproj", "{FDEEC37A-79C9-40BB-BF6A-C4C61AD1C45B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Script", "SQL Script", "{68102F1D-4E19-4334-AF75-2D0B9A0DF470}"
+	ProjectSection(SolutionItems) = preProject
+		db-creation.txt = db-creation.txt
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B06079A0-CB77-42E3-A1EE-E7A99289D56B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B06079A0-CB77-42E3-A1EE-E7A99289D56B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B06079A0-CB77-42E3-A1EE-E7A99289D56B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B06079A0-CB77-42E3-A1EE-E7A99289D56B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36F60AEB-4FE3-44B5-AB71-E9D6D97EF26A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36F60AEB-4FE3-44B5-AB71-E9D6D97EF26A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36F60AEB-4FE3-44B5-AB71-E9D6D97EF26A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36F60AEB-4FE3-44B5-AB71-E9D6D97EF26A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FC6BF9-B324-4201-93A0-EE86721AAC87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FC6BF9-B324-4201-93A0-EE86721AAC87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FC6BF9-B324-4201-93A0-EE86721AAC87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FC6BF9-B324-4201-93A0-EE86721AAC87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C944DEBD-D1D1-45D7-BAF0-EB39067A9BDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C944DEBD-D1D1-45D7-BAF0-EB39067A9BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C944DEBD-D1D1-45D7-BAF0-EB39067A9BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C944DEBD-D1D1-45D7-BAF0-EB39067A9BDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD4DE796-FADF-4FEC-BD67-95FB550E9D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4DE796-FADF-4FEC-BD67-95FB550E9D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4DE796-FADF-4FEC-BD67-95FB550E9D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4DE796-FADF-4FEC-BD67-95FB550E9D90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDEEC37A-79C9-40BB-BF6A-C4C61AD1C45B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDEEC37A-79C9-40BB-BF6A-C4C61AD1C45B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDEEC37A-79C9-40BB-BF6A-C4C61AD1C45B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDEEC37A-79C9-40BB-BF6A-C4C61AD1C45B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B06079A0-CB77-42E3-A1EE-E7A99289D56B} = {910E2D0F-8773-4D64-9E5F-6C6429C0A121}
+		{36F60AEB-4FE3-44B5-AB71-E9D6D97EF26A} = {C3904D7C-D79A-459C-B93B-2485B4714389}
+		{46FC6BF9-B324-4201-93A0-EE86721AAC87} = {53F778EE-CDCD-440A-926F-D0F7DB530945}
+		{C944DEBD-D1D1-45D7-BAF0-EB39067A9BDF} = {5F59218C-71AA-4FBE-A3F4-EC8540717F99}
+		{AD4DE796-FADF-4FEC-BD67-95FB550E9D90} = {18F777B7-4426-47B5-86EC-7FD992FDD7DB}
+		{FDEEC37A-79C9-40BB-BF6A-C4C61AD1C45B} = {E39BA0AB-FBA3-4AED-BC37-4CC8ABC8FDAC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2F97981-B981-48C4-91B2-99C7CBB9F483}

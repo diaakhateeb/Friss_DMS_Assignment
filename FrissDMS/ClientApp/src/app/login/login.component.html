@@ -1,0 +1,16 @@
+<h1>FRISS DMS Login</h1>
+
+<table class='table table-striped'>
+  <tr>
+    <td><label>Username<span style="color:red"> *</span></label></td>
+    <td><input type="text" [(ngModel)]="username" class="form-control" style="width:250px" required placeholder="Required" /></td>
+  </tr>
+  <tr>
+    <td><label>Password<span style="color:red"> *</span></label></td>
+    <td><input type="password" [(ngModel)]="password" class="form-control" style="width:250px" required placeholder="Required" /></td>
+  </tr>
+  <tr>
+    <td><input class="btn btn-primary" type="submit" value="Login" (click)="loginUser()" /></td>
+    <td><a routerLink="/registration">Register</a></td>
+  </tr>
+</table>

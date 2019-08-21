@@ -1,0 +1,110 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\dist\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\dist\**" />
+    <EmbeddedResource Remove="ClientApp\dist\**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\dist\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\3rdpartylicenses.txt" />
+    <Content Remove="wwwroot\assets\img\403-Forbidden.png" />
+    <Content Remove="wwwroot\index.html" />
+    <Content Remove="wwwroot\main.4bff3eba40234b9fe067.js" />
+    <Content Remove="wwwroot\polyfills.7a0e6866a34e280f48e7.js" />
+    <Content Remove="wwwroot\runtime.a66f828dca56eeb90e02.js" />
+    <Content Remove="wwwroot\styles.7a2a42aec9fdd4c8c846.css" />
+    <Content Remove="wwwroot\Uploads\Adam-Ali-CV-08042018.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\Services\authGuardService.ts" />
+    <None Remove="ClientApp\Services\authService.ts" />
+    <None Remove="ClientApp\Services\DocumentService.ts" />
+    <None Remove="ClientApp\Services\userService.ts" />
+    <None Remove="ClientApp\src\app\access-denied\access-denied.Component.ts" />
+    <None Remove="ClientApp\src\app\document\DocumentComponent.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\3rdpartylicenses.txt" />
+    <None Include="wwwroot\assets\img\403-Forbidden.png" />
+    <None Include="wwwroot\index.html" />
+    <None Include="wwwroot\main.4bff3eba40234b9fe067.js" />
+    <None Include="wwwroot\polyfills.7a0e6866a34e280f48e7.js" />
+    <None Include="wwwroot\runtime.a66f828dca56eeb90e02.js" />
+    <None Include="wwwroot\styles.7a2a42aec9fdd4c8c846.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CustomLogger\CustomLogger.csproj" />
+    <ProjectReference Include="..\DataModel\DataModel.csproj" />
+    <ProjectReference Include="..\DocumentRepositoryService\DocumentRepositoryService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\Services\AuthService.ts" />
+    <TypeScriptCompile Include="ClientApp\Services\AuthGuardService.ts" />
+    <TypeScriptCompile Include="ClientApp\Services\UserService.ts" />
+    <TypeScriptCompile Include="ClientApp\Services\DocumentService.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\access-denied\access-denied.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\document\documentComponent.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\package.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>
