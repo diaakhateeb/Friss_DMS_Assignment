@@ -1,1 +1,1 @@
-# Friss Small Document Management System.
+# FRISS Small Document Management System.
